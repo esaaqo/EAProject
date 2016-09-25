@@ -1,15 +1,22 @@
 package mum.cs544.project.controller;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
+import javax.validation.Valid;
+
+import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import mum.cs544.project.domain.Role;
 import mum.cs544.project.domain.User;
 import mum.cs544.project.service.UserService;
 
@@ -20,7 +27,7 @@ import mum.cs544.project.service.UserService;
 public class AdminController {
 	@Autowired
 UserService userService;
-	@RequestMapping(value="/addUser",method=RequestMethod.POST)
+	@RequestMapping(value="/addUser",method=RequestMethod.GET)
 	public String createEmployee(@ModelAttribute("user") User user){
 		System.out.println("addUser method");
 		return "addUser";
@@ -46,5 +53,52 @@ UserService userService;
 		model.addAttribute("user",user);
 		return "edit";
 	}
-	
+	@RequestMapping(value="/editUser",method=RequestMethod.POST)
+	public String editUser(@Valid@ModelAttribute("user") User user,BindingResult bindingResult,RedirectAttributes redirectAttrs){
+		System.out.println("Editing usig edit User");
+		if(bindingResult.hasErrors()){
+			return "addUser";
+		}
+		userService.edit(user);
+		redirectAttrs.addFlashAttribute("message",user.getFirstName()+" "+user.getLastName()+" Successfully edited");
+		return "/admin/userList";
+	}
+	@RequestMapping(value="/addUser",method=RequestMethod.POST)
+	public String newUser(@Valid @ModelAttribute("user") User user,BindingResult bindingResult,RedirectAttributes redirectAttrs){
+		if(bindingResult.hasErrors()){
+			return "addUsers";
+		}
+		String newPassword=this.MD5(user.getPassword());
+		user.setPassword(newPassword);
+		Role role=new Role();
+		role.setId(RandomUtils.nextLong());
+		role.setRole(1);
+		role.setUser(user);
+		user.setRole(role);
+		userService.save(user);
+		redirectAttrs.addFlashAttribute("message","Welcome "+user.getFirstName());
+		System.out.println("adduser have called");
+		return "redirect:/admin/home";
+		
+		
+	}
+	public String MD5(String md5){
+		java.security.MessageDigest md;
+		
+		try {
+			md = java.security.MessageDigest.getInstance("MD5");
+			byte[] array=md.digest(md5.getBytes());
+			StringBuffer sb=new StringBuffer();
+			for (int i = 0; i < array.length; ++i) {
+		          sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1,3));
+		       }
+		        return sb.toString();
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+		
+		
+	}
 }

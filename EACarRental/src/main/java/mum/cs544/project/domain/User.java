@@ -15,7 +15,7 @@ public class User {
 	private int id;
 	private String firstName;
 	private String lastName;
-	private String Email;
+	private String email;
 	public String password;
 	public String userName;
 	@OneToOne(mappedBy="user", cascade={CascadeType.ALL})
@@ -43,10 +43,10 @@ public class User {
 		this.lastName = lastName;
 	}
 	public String getEmail() {
-		return Email;
+		return email;
 	}
 	public void setEmail(String email) {
-		Email = email;
+		this.email = email;
 	}
 	public String getPassword() {
 		return password;
