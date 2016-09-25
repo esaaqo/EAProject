@@ -6,7 +6,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -16,7 +15,7 @@ import javax.persistence.TemporalType;
 @Entity
 public class Reservation {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue
 	private int id;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date pickupdate;
@@ -27,7 +26,44 @@ public class Reservation {
 	@JoinColumn(name = "carId")
 	private Car car;
 	public String dropofflocation;
+
+	@OneToOne(mappedBy = "reservationID")
+	private Pickup pickup;
+
+	@OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@JoinColumn(name = "clientId")
+	private User client;
 	
+	public Reservation() {
+		super();
+	}
+
+	public Reservation(Date pickupdate, String pickuplocation, Date dropoffdate, String dropofflocation, Car car,
+			User client) {
+		super();
+		this.pickupdate = pickupdate;
+		this.pickuplocation = pickuplocation;
+		this.dropoffdate = dropoffdate;
+		this.car = car;
+		this.dropofflocation = dropofflocation;
+		this.client = client;
+	}
+
+	public User getClient() {
+		return client;
+	}
+
+	public void setClient(User client) {
+		this.client = client;
+	}
+
+	public Pickup getPickup() {
+		return pickup;
+	}
+
+	public void setPickup(Pickup pickup) {
+		this.pickup = pickup;
+	}
 	public int getId() {
 		return id;
 	}

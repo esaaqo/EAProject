@@ -6,7 +6,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -15,7 +14,7 @@ public class Car {
 	//@Transient
 	//private MultipartFile carImage;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue
 	private int id;
 	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinColumn(name = "carTypeId")
@@ -28,6 +27,19 @@ public class Car {
 	private Date lastInpsected;
 	
 	public Car() {
+	}
+
+	public Car(int id, CarType carType, String name, String imageLink, int numberOfMiles, int pricePerDay, int year,
+			Date lastInpsected) {
+		super();
+		this.id = id;
+		this.carType = carType;
+		this.name = name;
+		this.imageLink = imageLink;
+		this.numberOfMiles = numberOfMiles;
+		this.pricePerDay = pricePerDay;
+		this.year = year;
+		this.lastInpsected = lastInpsected;
 	}
 
 	public Car(CarType carType, String name, String imageLink, int numberOfMiles, int pricePerDay, int year,

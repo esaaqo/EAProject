@@ -28,6 +28,8 @@ public class Pickup {
 	@ManyToOne
 	@JoinColumn(name="employeeId")
 	private User employee;
+	@OneToOne(mappedBy = "pickup")
+	private ReturnCar returncar;
 
 	public Pickup() {
 
