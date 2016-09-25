@@ -11,5 +11,6 @@
 
 <P>  The time on the server is ${serverTime}. </P>
 <h1><a href="/EACarRental/admin/addUser">Sign up</a></h1>
+<h1><a href="/EACarRental/admin/userList">All Users</a></h1>
 </body>
 </html>

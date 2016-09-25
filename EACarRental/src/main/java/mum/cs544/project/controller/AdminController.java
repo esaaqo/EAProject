@@ -37,7 +37,7 @@ UserService userService;
 	public String getUsers(Model model){
 		System.out.println("get users");
 		List<User> users=userService.getAll();
-		model.addAttribute("userList",users);
+		model.addAttribute("users",users);
 		return "userList";
 	}
 	@RequestMapping(value="/delete/{id}")
@@ -78,7 +78,7 @@ UserService userService;
 		userService.save(user);
 		redirectAttrs.addFlashAttribute("message","Welcome "+user.getFirstName());
 		System.out.println("adduser have called");
-		return "redirect:/admin/home";
+		return "/admin/userList";
 		
 		
 	}
