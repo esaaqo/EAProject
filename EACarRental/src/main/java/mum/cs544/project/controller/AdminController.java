@@ -73,7 +73,7 @@ UserService userService;
 		user.setPassword(newPassword);
 		Role role=new Role();
 		role.setId(RandomUtils.nextLong());
-		role.setUser_role("ADMIN");
+		role.setRole(1);
 		role.setUser(user);
 		user.setRole(role);
 		userService.save(user);

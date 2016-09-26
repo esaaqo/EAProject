@@ -34,7 +34,7 @@ public String addUsers(@ModelAttribute("user") @Valid User user, BindingResult r
 	user.setPassword(newpassword);
 	Role role = new Role();
 	role.setId(RandomUtils.nextLong());
-	role.setUser_role("USER");
+	role.setRole(2);
 	role.setUser(user);
 	user.setRole(role);
 	userService.save(user);

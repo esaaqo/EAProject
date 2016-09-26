@@ -10,6 +10,9 @@
  <a href="${pageContext.request.contextPath}/welcome">Home</a>
  
   | &nbsp;
+   <a href="${pageContext.request.contextPath}/login">Login</a>
+  
+  | &nbsp;
   
    <a href="${pageContext.request.contextPath}/userInfo">User Info</a>
   

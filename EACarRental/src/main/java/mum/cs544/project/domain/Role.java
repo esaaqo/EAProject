@@ -10,7 +10,7 @@ public class Role {
 	private Long id;
 	@OneToOne
 	private User user;
-	private String user_role;
+	private Integer role;
 	public Long getId() {
 		return id;
 	}
@@ -23,11 +23,12 @@ public class Role {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public String getUser_role() {
-		return user_role;
+	public Integer getRole() {
+		return role;
 	}
-	public void setUser_role(String user_role) {
-		this.user_role = user_role;
+	public void setRole(Integer role) {
+		this.role = role;
 	}
+	
 	
 }
