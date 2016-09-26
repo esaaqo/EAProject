@@ -8,8 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%-- <jsp:include page="home.jsp" /> --%>
-    
+<jsp:include page="home.jsp" />
     
    <h1>Login</h1>
      
@@ -25,8 +24,8 @@
        
    <h3>Enter user name and password:</h3>  
      
-   <form  action="/EACarRental/postLogin" method='POST' >
-   <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/><!--  invalid-csrf-token-null-was-found-on-the-request-parameter-csrf-or-header -->
+   <form  action="postLogin" method='POST' >
+  <%--  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%><!--  invalid-csrf-token-null-was-found-on-the-request-parameter-csrf-or-header -->
       <table>
          <tr>
             <td>User:</td>

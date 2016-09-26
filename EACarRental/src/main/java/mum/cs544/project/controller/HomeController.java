@@ -28,7 +28,7 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = {"/","/welcome"}, method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		//logger.info("Welcome home! The client locale is {}.", locale);
 		
@@ -42,7 +42,7 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage(Model model ) {
          
         return "loginPage";
@@ -59,7 +59,7 @@ public class HomeController {
 		System.out.println("after login" + cus.getSessionUser().getEmail());
  		return "redirect:/welcome";
  	}
-   /* @RequestMapping(value = "/logoutSuccessful", method = RequestMethod.GET)
+    @RequestMapping(value = "/logoutSuccessful", method = RequestMethod.GET)
     public String logoutSuccessfulPage(Model model) {
         model.addAttribute("title", "Logout");
         return "logoutSuccessfulPage";
@@ -85,14 +85,14 @@ public class HomeController {
                     "You do not have permission to access this page!");
         }
         return "403Page";
-    }*/
+    }
 	@RequestMapping(value="/logout", method = RequestMethod.GET)
 	public String logout(Model model) {
- 		return "redirect:/";
+ 		return "redirect:/welcome";
  	}
 	
 	@RequestMapping(value="/denied", method = RequestMethod.GET)
 	public String error(Model model) {
  		return "redirect:/error-forbidden";
- 	}
+ 	}*/
 }

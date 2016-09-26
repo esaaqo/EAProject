@@ -7,7 +7,7 @@
 		and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/spring/root-context.xml,/WEB-INF/spring/spring-hibernate.xml,/WEB-INF/spring/security-context.xml</param-value>
+		<param-value>/WEB-INF/spring/root-context.xml,/WEB-INF/spring/spring-hibernate.xml</param-value>
 	</context-param>
 
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
@@ -30,7 +30,7 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-	<filter>
+	<!-- <filter>
 		<filter-name>springSecurityFilterChain</filter-name>
 			<filter-class>
 				org.springframework.web.filter.DelegatingFilterProxy
@@ -49,5 +49,5 @@
 		<error-page>
 			<error-code>403</error-code>
 			<location>/WEB-INF/views/error-forbidden.jsp</location>
-		</error-page>
+		</error-page> -->
 </web-app>
