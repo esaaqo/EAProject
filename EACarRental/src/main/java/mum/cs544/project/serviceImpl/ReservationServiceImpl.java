@@ -33,7 +33,7 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 	@Override
 	public Reservation save(Reservation reservation) {
-		reservation.setId(1);
+		reservation.setId(10000);
 		reservationRepository.save(reservation);
 		return reservation;
 	}

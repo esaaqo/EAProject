@@ -1,6 +1,7 @@
 package mum.cs544.project.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -13,7 +14,7 @@ public class Branch {
 	int id;
 
 	String brachName;
-	@OneToOne
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "addressId")
 	Address address;
 
