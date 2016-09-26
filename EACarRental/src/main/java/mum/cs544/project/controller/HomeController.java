@@ -41,6 +41,11 @@ public class HomeController {
 		
 		return "home";
 	}
+	@RequestMapping(value = "/reserve", method = RequestMethod.GET)
+	public String createEmployee(Model model) {
+
+		return "reserve";
+	}
 	
 	/*@RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage(Model model ) {
