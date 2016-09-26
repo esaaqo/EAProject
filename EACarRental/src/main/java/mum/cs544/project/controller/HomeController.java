@@ -13,22 +13,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import mum.cs544.project.serviceImpl.CustomUserDetailsService;
+
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
 public class HomeController {
-	//@Autowired
-	CustomUserDetailsService cus;
 	
 	//private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = {"/","/welcome"}, method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		//logger.info("Welcome home! The client locale is {}.", locale);
 		
@@ -38,15 +36,38 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
+		 model.addAttribute("title", "Welcome");
+	        model.addAttribute("message", "This is welcome page!");
+	
 		
-		return "home";
+		return "welcome";
 	}
 	@RequestMapping(value = "/reserve", method = RequestMethod.GET)
 	public String createEmployee(Model model) {
 
 		return "reserve";
 	}
-	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String loginPage(Model model ) {
+         
+        return "loginPage";
+    }
+	 @RequestMapping(value = "/logout", method = RequestMethod.GET)
+	    public String logoutSuccessfulPage(Model model) {
+	        model.addAttribute("title", "Logout");
+	        return "logoutSuccessfulPage";
+	    }
+	 @RequestMapping(value = "/userInfo", method = RequestMethod.GET)
+	    public String userInfo(Model model, Principal principal) {
+	 
+	        // After user login successfully.
+	        String userName = principal.getName();
+	 
+	        System.out.println("User Name: "+ userName);
+	 
+	        return "home";
+	    }
+	 
 	/*@RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage(Model model ) {
          

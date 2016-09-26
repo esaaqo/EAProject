@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,7 +11,7 @@
 <body>
 <jsp:include page="home.jsp" />
     
-   <h1>Login</h1>
+  <h1>Login</h1>
      
      <!-- /login?error=true -->
      <c:if test="${param.error == 'true'}">
@@ -24,12 +25,11 @@
        
    <h3>Enter user name and password:</h3>  
      
-   <form  action="postLogin" method='POST' >
-  <%--  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%><!--  invalid-csrf-token-null-was-found-on-the-request-parameter-csrf-or-header -->
+   <form name='f' action="${pageContext.request.contextPath}/j_spring_security_check" method='POST'>
       <table>
          <tr>
             <td>User:</td>
-            <td><input type='text' name='username'></td>
+            <td><input type='text' name='username' value=''></td>
          </tr>
          <tr>
             <td>Password:</td>

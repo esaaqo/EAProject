@@ -69,11 +69,11 @@ UserService userService;
 		if(bindingResult.hasErrors()){
 			return "addUser";
 		}
-		String newPassword=this.MD5(user.getPassword());
-		user.setPassword(newPassword);
+		//String newPassword=this.MD5(user.getPassword());
+		//user.setPassword(newPassword);
 		Role role=new Role();
 		role.setId(RandomUtils.nextLong());
-		role.setRole(1);
+		role.setRole("ADMIN");
 		role.setUser(user);
 		user.setRole(role);
 		userService.save(user);

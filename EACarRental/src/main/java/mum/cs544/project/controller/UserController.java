@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import mum.cs544.project.domain.Role;
 import mum.cs544.project.domain.User;
+
 import mum.cs544.project.service.UserService;
 
 @Controller
@@ -20,6 +22,8 @@ import mum.cs544.project.service.UserService;
 public class UserController {
 @Autowired
 UserService userService;
+
+
 @RequestMapping(value="/signUp",method=RequestMethod.GET)
 public String addUser(@ModelAttribute("user") User user){
 	System.out.println("User sign up called");
@@ -30,16 +34,17 @@ public String addUsers(@ModelAttribute("user") @Valid User user, BindingResult r
 	if(result.hasErrors()){
 		return "signUp";
 	}
-	String newpassword = this.MD5(user.getPassword());
-	user.setPassword(newpassword);
+	//String newpassword = this.MD5(user.getPassword());
+	//user.setPassword(newpassword);
 	Role role = new Role();
 	role.setId(RandomUtils.nextLong());
-	role.setRole(2);
+	role.setRole("USER");
 	role.setUser(user);
 	user.setRole(role);
 	userService.save(user);
+	//securityService.autologin(user.getUserName(), user.getPassword());
 	redirectAttrs.addFlashAttribute("message","Welcome "+ user.getFirstName()+"  "+user.getLastName()+" Now login with your username and password for access, Your Email is username ");
-	return "login";
+	return "redirect:/welcome";
 }
 public String MD5(String md5) {
 	   try {
@@ -54,4 +59,5 @@ public String MD5(String md5) {
 	    }
 	    return null;
 	}
+
 }
