@@ -20,7 +20,7 @@ Email: <form:input path="email" type="text" />
 		<form:errors path="email" /><br>
 Password: <form:input path="password" type="password" /> 
 		<form:errors path="password" /><br>
-<form:hidden path="role.role" /><%-- type="hidden" value='${role.role}' --%>
+<form:hidden path="role.user_role" /><%-- type="hidden" value='${role.role}' --%>
 <form:hidden path="userName"/>	
 City: <form:input path="address.city" type="text" />
 		<form:errors path="address.city" /><br>	

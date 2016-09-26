@@ -15,7 +15,7 @@
   
   | &nbsp;
   
-  <a href="${pageContext.request.contextPath}/admin">Admin</a>
+  <a href="${pageContext.request.contextPath}/admin/addUser">Admin</a>
   
   <c:if test="${pageContext.request.userPrincipal.name != null}">
   
