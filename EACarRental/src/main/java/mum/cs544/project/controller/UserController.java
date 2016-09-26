@@ -34,8 +34,8 @@ public String addUsers(@ModelAttribute("user") @Valid User user, BindingResult r
 	if(result.hasErrors()){
 		return "signUp";
 	}
-	//String newpassword = this.MD5(user.getPassword());
-	//user.setPassword(newpassword);
+	String newpassword = this.MD5(user.getPassword());
+	user.setPassword(newpassword);
 	Role role = new Role();
 	role.setId(RandomUtils.nextLong());
 	role.setRole("USER");

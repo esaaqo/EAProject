@@ -18,7 +18,9 @@
  
         <intercept-url pattern="/userInfo"
             access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
-        <intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')" />
+            <intercept-url pattern="/user/**"
+            access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
+        <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/other/**" access="isAuthenticated()" />
  
         <access-denied-handler error-page="/403" />
@@ -48,8 +50,10 @@
             <jdbc-user-service data-source-ref="dataSource"
                 users-by-username-query="select userName,password,1 from carrental.user where userName=?"
                 authorities-by-username-query="Select distinct userName, concat('ROLE_',role) role from carrental.role inner join carrental.user where carrental.user.userName=?" />
+       			<password-encoder hash="md5"></password-encoder>
         </authentication-provider>
  
     </authentication-manager>
+    
  
 </beans:beans>
