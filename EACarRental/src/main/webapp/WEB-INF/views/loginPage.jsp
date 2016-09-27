@@ -40,6 +40,7 @@
             <td><input name="submit" type="submit" value="submit" /></td>
          </tr>
       </table>
+      <p>New User <a href="/EACarRental/user/signUp">SIGN UP</a></p>
   </form>
   </div>
 </body>

@@ -1,14 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="UI" uri="/WEB-INF/views/UITag.tld" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Edit Car here</title>
+<UI:UITag type="dependency"/>
 </head>
 <body>
-
+<UI:UITag type="header"/>
+<UI:UITag type="startContainer"/>
 <form:form modelAttribute="car" action="/EACarRental/car/editCar" method="post">
 <form:hidden path="id" />
 
@@ -26,6 +29,6 @@ Last Inspected:<form:input path="lastInpsected" type="date" /><form:errors path=
 </form:form>
 
 <a href="/EACarRental/car/carList"><button>Cancel</button></a>
-
+<UI:UITag type="endContainer"/>
 </body>
 </html>
