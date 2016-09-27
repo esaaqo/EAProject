@@ -14,15 +14,17 @@
         <intercept-url pattern="/welcome" access="permitAll()" />
         <intercept-url pattern="/login" access="permitAll()" />
         <intercept-url pattern="/logout" access="permitAll()" />
+          <intercept-url pattern="/user/signUp" access="permitAll()" />
  
  
         <intercept-url pattern="/userInfo"
             access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
-            <intercept-url pattern="/user/**"
-            access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
+            <!-- <intercept-url pattern="/user/**"
+            access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" /> -->
         <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/other/**" access="isAuthenticated()" />
- 
+ <intercept-url pattern="/reserve"
+            access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
         <access-denied-handler error-page="/403" />
  
         <form-login login-page='/login' login-processing-url="/j_spring_security_check"

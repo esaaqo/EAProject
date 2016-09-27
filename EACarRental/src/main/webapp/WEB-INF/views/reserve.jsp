@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="UI" uri="/WEB-INF/views/UITag.tld" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,55 +10,10 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="resources/js/reserve.js"></script>
-<!-- Compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
-
-<!-- Compiled and minified JavaScript -->
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
-<style>
-.searcher {
-	margin: auto;
-	margin-top: 10px;
-	max-width: 500px;
-	border: 1px solid #999999;
-	position: relative
-}
-.searchterm {
-	width: 500px;
-}
-
-.searchContents{
-	overflow-y: auto;
-	height: 300px;
-}
-.car{
-	border-bottom:1px solid #DDDDDD;
-}
-.carData{
-	border:1px solid #DDDDDD;
-	padding-top: 4px;	
-	padding-bottom: 4px;
-	margin: 4px;
-}
-.carDataType{
-	background: #DDDDDD;
-	padding: 4px;	
-}
-.carDataValue{
-	color: black;
-	padding: 4px;
-}
-</style>
+<UI:UITag type="dependency"/>
 </head>
-<body style="font-family: Arial; font-size: 12px;">
-	<span class="carData"><span class="carDataType">Name</span><span>value<span class="carDataValue"></span></span>
-	<nav>
-		<div class="nav-wrapper">
-			<a href="#" class="brand-logo">Logo</a>
-		</div>
-	</nav>
+<body style="font-family: Arial; font-size: 12px;">	
+	<UI:UITag type="header"/>
 	<div class="searcher">
 		<div class="row">
 			<div class="col searchterm input-field">

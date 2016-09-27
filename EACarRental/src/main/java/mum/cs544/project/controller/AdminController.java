@@ -55,10 +55,10 @@ UserService userService;
 	}
 	@RequestMapping(value="/editUser",method=RequestMethod.POST)
 	public String editUser(@ModelAttribute("user") @Valid User user,BindingResult bindingResult,RedirectAttributes redirectAttrs){
-		System.out.println("Editing usig edit User");
+		System.out.println("Editing using edit User");
 		if(bindingResult.hasErrors()){
 			System.out.println(bindingResult.getAllErrors());
-			return "edit";
+			return "addUser";
 		}
 		userService.edit(user);
 		redirectAttrs.addFlashAttribute("message",user.getFirstName()+" "+user.getLastName()+" Successfully edited");

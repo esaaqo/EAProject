@@ -5,10 +5,9 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,10 +47,16 @@ public class HomeController {
 	        model.addAttribute("message", "This is welcome page!");
 	
 		
-		return "welcome";
+		return "home";
 	}
 	@RequestMapping(value = "/reserve", method = RequestMethod.GET)
-	public String createEmployee(Model model) {
+	public String createEmployee(Model model,Principal principal) {
+		String userName = principal.getName();
+        model.addAttribute("Iuser",userName);
+        User u=userService.findByUsername(userName);
+        model.addAttribute("email", u.getEmail());
+        model.addAttribute("id", u.getId());
+        System.out.println("User Name: "+ userName);
 
 		return "reserve";
 	}
@@ -60,10 +65,11 @@ public class HomeController {
          
         return "loginPage";
     }
-	 @RequestMapping(value = "/logout", method = RequestMethod.GET)
-	    public String logoutSuccessfulPage(Model model) {
+	 @RequestMapping(value = "/logoutSuccessful", method = RequestMethod.GET)
+	    public String logoutSuccessfulPage(Model model,HttpSession session) {
 	        model.addAttribute("title", "Logout");
-	        return "logoutSuccessfulPage";
+	        session.removeAttribute("Iuser");
+	        return "home";
 	    }
 	 @RequestMapping(value = "/userInfo", method = RequestMethod.GET)
 	    public String userInfo(Model model, Principal principal) {
@@ -73,11 +79,17 @@ public class HomeController {
 	        model.addAttribute("Iuser",userName);
 	        User u=userService.findByUsername(userName);
 	        model.addAttribute("email", u.getEmail());
+	        model.addAttribute("id", u.getId());
+	        System.out.println("User Name: "+ userName);
+	        System.out.println("the role of "+userName+" is "+u.getRole().getRole());
+	        if(u.getRole().getRole().equals("USER")){
+	        	return "redirect:/reserve";
+	        }
 	       
 	 
 	        System.out.println("User Name: "+ userName);
 	 
-	        return "home";
+	        return "adminHome";
 	    }
 	 @RequestMapping(value = "/403", method = RequestMethod.GET)
 	    public String accessDenied(Model model, Principal principal) {

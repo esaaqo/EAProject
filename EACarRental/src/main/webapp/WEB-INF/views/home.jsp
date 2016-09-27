@@ -1,46 +1,65 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %><%-- 
-<%@ page session="false" %> --%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<html>
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>Home</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title></title>
+
+<link href="http://getbootstrap.com/dist/css/bootstrap.css"	rel="stylesheet">
+
+<link href="http://getbootstrap.com/examples/jumbotron/jumbotron.css"	rel="stylesheet">
+
 </head>
+
 <body>
-<div>
- <a href="${pageContext.request.contextPath}/welcome">Home</a>
- 
-  | &nbsp;
-   <a href="${pageContext.request.contextPath}/login">Login</a>
-  
-  | &nbsp;
-  
-   <a href="${pageContext.request.contextPath}/userInfo">User Info</a>
-  
-  | &nbsp;
-  
-  <a href="${pageContext.request.contextPath}/admin/addUser">Admin</a>
-  
-  <c:if test="${pageContext.request.userPrincipal.name != null}">
-  
-     | &nbsp;
-     <a href="${pageContext.request.contextPath}/logout">Logout</a>
-     
-  </c:if>
 
+	<div class="container">
+		<div class="header">
+			<ul class="nav nav-pills pull-right">
+				
 
-</div>
-<h1>
-	Hello world!  
-</h1>
-<h3>Welcome : ${pageContext.request.userPrincipal.name}</h3>
-<h1>${Iuser}</h1>
-<h1>${email}</h1>
+<li><a href="/EACarRental"  class="btn btn-danger">Home</a></li>
+<li><a href="/EACarRental/login"   class="btn btn-danger">Login</a></li>
+<li><a href="/EACarRental/user/signUp" class="btn btn-danger">SignUp</a></li>
+<li><a href="/EACarRental/reserve" class="btn btn-danger">Reserve Car</a></li>
+<li></li>
+<li></li>
+			</ul>
+			<img src="/EACarRental/resources/images/car1.png" alt="image"  style = "width:5%"/>Rental Service
+		</div>
 
-<P>  The time on the server is ${serverTime}. </P>
-<h1><a href="/EACarRental/admin/addUser">Employee register</a></h1>
-<h1><a href="/EACarRental/admin/userList">All Users</a></h1>
-<h1><a href="/EACarRental/user/signUp">User Signup</a></h1>
-<h1><a href="/EACarRental/car/carList">List Car</a></h1>
-<h1><a href="/EACarRental/car/addCar">Add Car</a></h1>
+	
+		<div class="jumbotron">
+			<h1>
+						
+				Welcome to our Car Rental Service
+				
+			</h1>
+			<p>
+				Rent a car
+			</p>
+		</div>
+		<div>
+		<img alt="Car Image" src="/EACarRental/resources/images/car2.jpg" style="length:400px;width: 400px;">
+		<img alt="Car Image" src="/EACarRental/resources/images/car3.png" style="length:400px;width: 400px;">
+		
+		
+		</div>
+
+		<div class="footer">
+			<p>&copy; Group F</p>
+<P>Contact;6414513369</P>
+<p>1000 Nth 4th St</p>
+<p>Fairfield, Iowa</p>
+		</div>
+
+	</div>
 </body>
 </html>

@@ -9,7 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="home.jsp" />
+<%-- <jsp:include page="home.jsp" /> --%>
+<div style="margin-left: 40%">
     
   <h1>Login</h1>
      
@@ -40,5 +41,6 @@
          </tr>
       </table>
   </form>
+  </div>
 </body>
 </html>
