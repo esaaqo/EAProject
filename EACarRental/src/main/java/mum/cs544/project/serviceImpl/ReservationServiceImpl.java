@@ -16,6 +16,7 @@ import mum.cs544.project.repository.ReservationRepository;
 import mum.cs544.project.service.CarSearchService;
 import mum.cs544.project.service.ReservationService;
 import mum.cs544.project.service.UserService;
+import mum.cs544.project.utilities.mail.MailService;
 
 
 @Service
@@ -27,6 +28,8 @@ public class ReservationServiceImpl implements ReservationService {
 	UserService userService;
 	@Autowired
 	CarSearchService carSearchService;
+	@Autowired
+	MailService mailService;
 	@PostConstruct
 	public void initmethod() {
 
@@ -74,6 +77,10 @@ public class ReservationServiceImpl implements ReservationService {
 		Car car = carSearchService.findById(Integer.parseInt(carId));
 		Reservation reservation = new Reservation(fromDate, fromLocation, toDate, toLocation, car, user);
 		save(reservation);
+		mailService.setToAddress("esaaqo@gmail.com");
+		mailService.setBody(fromDate + " " + fromLocation + " " + toDate + "" + toLocation);
+		mailService.setSubject("Your reservation is successful");
+		mailService.sendMail();
 		return "success";
 	}
 }

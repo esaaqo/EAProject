@@ -48,6 +48,8 @@
 	<context:component-scan base-package="mum.cs544.project.service" />
 	<context:component-scan base-package="mum.cs544.project.serviceImpl" />
 	<context:component-scan base-package="mum.cs544.project.GPS" />
+	<context:component-scan base-package="mum.cs544.project.utilities.mail" />
+	
 
 
 	<tx:annotation-driven transaction-manager="transactionManager" />
