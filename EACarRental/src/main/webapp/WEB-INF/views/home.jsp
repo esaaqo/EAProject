@@ -33,6 +33,8 @@
 	Hello world!  
 </h1>
 <h3>Welcome : ${pageContext.request.userPrincipal.name}</h3>
+<h1>${Iuser}</h1>
+<h1>${email}</h1>
 
 <P>  The time on the server is ${serverTime}. </P>
 <h1><a href="/EACarRental/admin/addUser">Employee register</a></h1>

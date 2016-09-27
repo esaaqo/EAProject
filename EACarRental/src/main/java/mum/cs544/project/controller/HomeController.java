@@ -8,10 +8,15 @@ import java.util.Locale;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
+import mum.cs544.project.domain.User;
+import mum.cs544.project.service.UserService;
 
 
 
@@ -19,7 +24,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Handles requests for the application home page.
  */
 @Controller
+@SessionAttributes("Iuser")
 public class HomeController {
+	@Autowired
+	UserService userService;
 	
 	//private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -62,11 +70,28 @@ public class HomeController {
 	 
 	        // After user login successfully.
 	        String userName = principal.getName();
+	        model.addAttribute("Iuser",userName);
+	        User u=userService.findByUsername(userName);
+	        model.addAttribute("email", u.getEmail());
+	       
 	 
 	        System.out.println("User Name: "+ userName);
 	 
 	        return "home";
 	    }
+	 @RequestMapping(value = "/403", method = RequestMethod.GET)
+	    public String accessDenied(Model model, Principal principal) {
+	         
+	        if (principal != null) {
+	            model.addAttribute("message", "Hi " + principal.getName()
+	                    + "<br> You do not have permission to access this page!");
+	        } else {
+	            model.addAttribute("msg",
+	                    "You do not have permission to access this page!");
+	        }
+	        return "eror-forbidden";
+	    }
+	 
 	 
 	/*@RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage(Model model ) {
