@@ -76,7 +76,7 @@ public class HomeController {
 	 
 	        // After user login successfully.
 	        String userName = principal.getName();
-	        model.addAttribute("Iuser",userName);
+	        model.addAttribute("Iuser","Hello "+userName);
 	        User u=userService.findByUsername(userName);
 	        model.addAttribute("email", u.getEmail());
 	        model.addAttribute("id", u.getId());

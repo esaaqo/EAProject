@@ -34,7 +34,7 @@ public class User {
 	public String password;
 	@NotEmpty
 	public String userName;
-	@OneToOne(mappedBy="user", cascade={CascadeType.ALL})
+	@OneToOne(mappedBy="user", cascade={CascadeType.REMOVE})
 	private Role role;
 	@Valid
 	@OneToOne(cascade = CascadeType.ALL,fetch=FetchType.EAGER)

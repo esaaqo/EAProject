@@ -1,20 +1,23 @@
 package mum.cs544.project.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity(name="role")
 public class Role {
 	@Id
-	private Long id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int id;
 	@OneToOne
 	private User user;
 	private String role;
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public User getUser() {

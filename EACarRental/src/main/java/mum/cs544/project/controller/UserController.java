@@ -37,7 +37,7 @@ public String addUsers(@ModelAttribute("user") @Valid User user, BindingResult r
 	String newpassword = this.MD5(user.getPassword());
 	user.setPassword(newpassword);
 	Role role = new Role();
-	role.setId(RandomUtils.nextLong());
+	role.setId(RandomUtils.nextInt());
 	role.setRole("USER");
 	role.setUser(user);
 	user.setRole(role);

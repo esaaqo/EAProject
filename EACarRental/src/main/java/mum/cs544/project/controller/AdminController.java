@@ -72,7 +72,7 @@ UserService userService;
 		String newPassword=this.MD5(user.getPassword());
 		user.setPassword(newPassword);
 		Role role=new Role();
-		role.setId(RandomUtils.nextLong());
+		role.setId(RandomUtils.nextInt());
 		role.setRole("ADMIN");
 		role.setUser(user);
 		user.setRole(role);

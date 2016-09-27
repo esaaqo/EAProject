@@ -5,12 +5,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Users List</title>
 </head>
 <body>
 <h1>${message }</h1>
 <div>
-<table>
+<table border="2" bordercolor="red">
 <thead>
     <tr>
       <th>Name</th>

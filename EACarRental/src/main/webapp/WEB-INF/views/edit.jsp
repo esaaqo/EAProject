@@ -12,6 +12,7 @@
 <body>
 <UI:UITag type="header"/>
 <UI:UITag type="startContainer"/>
+
 	<form:form modelAttribute="user" action="/EACarRental/admin/editUser" method="post">
 		<form:hidden path="id" />
 First Name: <form:input path="firstName" type="text"  />
@@ -24,7 +25,7 @@ Email: <form:input path="email" type="text" />
 		<form:errors path="email" /><br>
 Password: <form:input path="password" type="password" /> 
 		<form:errors path="password" /><br>
-<form:hidden path="role.role" /><%-- type="hidden" value='${role.role}' --%>
+<%-- <form:hidden path="role.role" /> --%><%-- type="hidden" value='${role.role}' --%>
 <form:hidden path="userName"/>	
 City: <form:input path="address.city" type="text" />
 		<form:errors path="address.city" /><br>	
