@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import mum.cs544.project.domain.User;
 import mum.cs544.project.service.UserService;
@@ -53,33 +54,38 @@ public class HomeController {
 	public String createEmployee(Model model,Principal principal) {
 		String userName = principal.getName();
         model.addAttribute("Iuser",userName);
-        User u=userService.findByUsername(userName);
-        model.addAttribute("email", u.getEmail());
-        model.addAttribute("id", u.getId());
+       // User u=userService.findByUsername(userName);
+        //model.addAttribute("email", u.getEmail());
+        //model.addAttribute("id", u.getId());
         System.out.println("User Name: "+ userName);
 
 		return "reserve";
 	}
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String loginPage(Model model ) {
-         
+    public String loginPage(Model model,SessionStatus status ) {
+		status.setComplete();
+		 model.addAttribute("Iuser", null);            
         return "loginPage";
     }
 	 @RequestMapping(value = "/logoutSuccessful", method = RequestMethod.GET)
-	    public String logoutSuccessfulPage(Model model,HttpSession session) {
-	        model.addAttribute("title", "Logout");
-	        session.removeAttribute("Iuser");
-	        return "home";
+	    public String logoutSuccessfulPage(Model model,SessionStatus status) {
+	       // model.addAttribute("title", "Logout");
+		 status.setComplete();
+		 model.addAttribute("Iuser", null);   
+		 
+	        //session.removeAttribute("Iuser");
+	       
+	      	return "home";
 	    }
 	 @RequestMapping(value = "/userInfo", method = RequestMethod.GET)
 	    public String userInfo(Model model, Principal principal) {
-	 
+		 	
 	        // After user login successfully.
 	        String userName = principal.getName();
-	        model.addAttribute("Iuser","Hello "+userName);
+	        model.addAttribute("Iuser",userName);
 	        User u=userService.findByUsername(userName);
-	        model.addAttribute("email", u.getEmail());
-	        model.addAttribute("id", u.getId());
+	       // model.addAttribute("email", u.getEmail());
+	        //model.addAttribute("id", u.getId());
 	        System.out.println("User Name: "+ userName);
 	        System.out.println("the role of "+userName+" is "+u.getRole().getRole());
 	        if(u.getRole().getRole().equals("USER")){

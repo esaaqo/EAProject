@@ -15,7 +15,7 @@
 <body style="font-family: Arial; font-size: 12px;">	
 	<UI:UITag type="header"/>
 	<div class="searcher">
-	<div>${Iuser}</div>
+	<%-- <div>${Iuser}</div> --%>
 		<div class="row">
 			<div class="col searchterm input-field">
 				<div class="row">
