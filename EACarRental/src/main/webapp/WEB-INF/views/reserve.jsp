@@ -13,6 +13,7 @@
 <UI:UITag type="dependency"/>
 </head>
 <body style="font-family: Arial; font-size: 12px;">	
+<div><a href="${pageContext.request.contextPath}/welcome">Home</a></div>
 	<UI:UITag type="header"/>
 	<div class="searcher">
 	<%-- <div>${Iuser}</div> --%>

@@ -11,7 +11,7 @@
 
 <h1>${message }</h1>
 <div>
-<table>
+<table border="2">
 <thead>
     <tr>
       <th>Number Of Cylinder</th>
@@ -52,6 +52,5 @@
 
 </div>
 <a href="addCar"><input type="button" value="Add Car"></a>
-
 </body>
 </html>

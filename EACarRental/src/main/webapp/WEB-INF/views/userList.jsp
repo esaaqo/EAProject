@@ -44,6 +44,6 @@
 
 </div>
 <a href="addUser"><input type="button" value="Add User"></a>
-
+<a href="adminHome">Admin Home</a>
 </body>
 </html>

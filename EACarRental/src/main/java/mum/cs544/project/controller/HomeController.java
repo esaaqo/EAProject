@@ -107,7 +107,7 @@ public class HomeController {
 	            model.addAttribute("msg",
 	                    "You do not have permission to access this page!");
 	        }
-	        return "eror-forbidden";
+	        return "error-forbidden";
 	    }
 	 
 	 

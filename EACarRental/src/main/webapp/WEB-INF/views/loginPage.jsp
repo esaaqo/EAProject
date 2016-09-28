@@ -10,7 +10,9 @@
 </head>
 <body>
 <%-- <jsp:include page="home.jsp" /> --%>
+<div><a href="${pageContext.request.contextPath}/welcome">Home</a></div>
 <div style="margin-left: 40%">
+
     
   <h1>Login</h1>
      

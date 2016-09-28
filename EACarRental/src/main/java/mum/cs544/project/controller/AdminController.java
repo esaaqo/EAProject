@@ -2,6 +2,7 @@ package mum.cs544.project.controller;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.Locale;
 
 import javax.validation.Valid;
 
@@ -82,6 +83,10 @@ UserService userService;
 		return "redirect:/admin/userList";
 		
 		
+	}
+	@RequestMapping(value = "/adminHome", method = RequestMethod.GET)
+	public String home(Model model) {
+		return "adminHome";
 	}
 	public String MD5(String md5){
 		java.security.MessageDigest md;
