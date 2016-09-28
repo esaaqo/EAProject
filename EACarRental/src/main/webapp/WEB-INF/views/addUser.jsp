@@ -25,5 +25,6 @@ Street Address:<form:input path="address.address" type="text" /><form:errors pat
 <form:button value="Add User" name="submit" >Add User</form:button>
 </form:form>
 <UI:UITag type="endContainer"/>
+<a href="adminHome">Admin Home</a>
 </body>
 </html>

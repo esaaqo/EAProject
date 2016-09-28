@@ -28,7 +28,7 @@
        
    <h3>Enter user name and password:</h3>  
      
-   <form name='f' action="${pageContext.request.contextPath}/j_spring_security_check" method='POST'>
+   <form name='f' action="${pageContext.request.contextPath}/j_spring_security_check" method='POST' role="form">
       <table>
          <tr>
             <td>User:</td>

@@ -110,7 +110,10 @@ public class HomeController {
 	        return "error-forbidden";
 	    }
 	 
-	 
+	 @RequestMapping(value="/denied", method = RequestMethod.GET)
+		public String error(Model model) {
+	 		return "redirect:/403";
+	 	}
 	/*@RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage(Model model ) {
          

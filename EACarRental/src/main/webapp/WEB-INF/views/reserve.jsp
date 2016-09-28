@@ -16,7 +16,7 @@
 <div><a href="${pageContext.request.contextPath}/welcome">Home</a></div>
 	<UI:UITag type="header"/>
 	<div class="searcher">
-	<%-- <div>${Iuser}</div> --%>
+	<div style="float: right;">${Iuser}</div>
 		<div class="row">
 			<div class="col searchterm input-field">
 				<div class="row">
